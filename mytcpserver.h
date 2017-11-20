@@ -17,6 +17,7 @@ public slots:
     void newConnection();
     void disconnected();
     void readyRead();
+    void write(QTcpSocket *socket, QByteArray data);
 
 private:
     QTcpServer *server;

@@ -43,5 +43,14 @@ void MyTcpServer::readyRead()
 {
     QTcpSocket *socket = qobject_cast<QTcpSocket*>(sender());
     QByteArray data = socket->readAll();
+    QByteArray answer = "You ask, I answer\r\n";
     qInfo() << "Client data ready" << data;
+    write(socket, answer);
+}
+
+void MyTcpServer::write(QTcpSocket *socket, QByteArray data)
+{
+    qInfo() << "Send to client: " << data;
+    socket->write(data);
+    socket->flush();
 }
