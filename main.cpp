@@ -1,12 +1,14 @@
 #include <QCoreApplication>
 
-#include "mytcpserver.h"
+#include "gtcpserver.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    MyTcpServer myServer;
+    GTcpServer myServer;
+
+    myServer.performListening();
 
     return a.exec();
 }
