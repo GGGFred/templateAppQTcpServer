@@ -29,7 +29,7 @@ public slots:
 
 protected:
 	quint16 port;
-
+    QList<QTcpSocket*> connections;
 };
 
 #endif // MYTCPSERVER_H

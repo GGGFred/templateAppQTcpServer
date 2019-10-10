@@ -59,6 +59,8 @@ void GTcpServer::newConnection()
 	connect(socket,SIGNAL(readyRead()),this,SLOT(readyRead()));
 	connect(socket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(stateChanged(QAbstractSocket::SocketState)));
 	connect(socket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(errorReceived(QAbstractSocket::SocketError)));
+
+    sockets.push_back(socket);
 }
 
 void GTcpServer::disconnected()

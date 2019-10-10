@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 
-#include "gtcpserver.h"
+#include "../src/gtcpserver.h"
 
 int main(int argc, char *argv[])
 {
