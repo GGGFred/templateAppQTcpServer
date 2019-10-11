@@ -20,9 +20,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
+SOURCES += test/main.cpp \
     src/gtcpserver.cpp \
-    test/main.cpp
 
 HEADERS += \
     src/gtcpserver.h
+
+win32{
+    CONFIG(debug, debug|release) {
+        DEST_DIRECTORY = $$PWD/win32/debug
+    }
+    CONFIG(release, debug|release) {
+        DEST_DIRECTORY = $$PWD/win32/release
+    }
+}
+
+unix:!mac{
+    CONFIG(debug, debug|release) {
+        DEST_DIRECTORY = $$PWD/linux/debug
+    }
+    CONFIG(release, debug|release) {
+        DEST_DIRECTORY = $$PWD/linux/release
+    }
+}
+
+MOC_DIR     += $${DEST_DIRECTORY}/generated/mocs
+UI_DIR      += $${DEST_DIRECTORY}/generated/uis
+RCC_DIR     += $${DEST_DIRECTORY}/generated/rccs
+OBJECTS_DIR += $${DEST_DIRECTORY}/generated/objs
+DLLDESTDIR = $${DEST_DIRECTORY}
+DESTDIR    = $${DEST_DIRECTORY}

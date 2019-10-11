@@ -66,8 +66,9 @@ void GTcpServer::newConnection()
 void GTcpServer::disconnected()
 {
 	QTcpSocket *socket = qobject_cast<QTcpSocket*>(sender());
-	qInfo() << "Client disconnected";
-	socket->deleteLater();
+    qInfo() << "Client disconnected";
+    sockets.removeOne(socket);
+    socket->deleteLater();
 }
 
 void GTcpServer::readyRead()
